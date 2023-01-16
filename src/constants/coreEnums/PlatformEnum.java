@@ -7,7 +7,7 @@ public enum PlatformEnum {
     WINDOWS("WINDOWS","PLT_003"),
     MACOS("MACOS","PLT_004"),
     LINUX("LINUX","PLT_005"),
-    ;
+    UNKNOWN("UNKNOWN","PLT_006");
 
     private String platformName;
     private String platformCode;
