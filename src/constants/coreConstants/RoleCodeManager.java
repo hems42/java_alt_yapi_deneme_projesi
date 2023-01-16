@@ -1,8 +1,13 @@
 package constants.coreConstants;
 
+import constants.coreEnums.DeviceEnum;
+import constants.coreEnums.PlatformEnum;
+
 import java.util.*;
 
-public class CoreAllAuthCodes {
+public class RoleCodeManager {
+
+
   /*
 
 
@@ -144,7 +149,7 @@ public class CoreAllAuthCodes {
     public static  String AUTH_STAGE_20_W = "058";
     public static  String AUTH_STAGE_20_F = "059";
 
-    Map<String, String> roleCodeMaps  = new HashMap<String, String>() {{
+  Map<String, String> roleCodeMaps  = new HashMap<String, String>() {{
         put(AUTH_STAGE_1_R, "AUTH_STAGE_1_R");
         put(AUTH_STAGE_1_W, "AUTH_STAGE_1_W");
         put(AUTH_STAGE_1_F, "AUTH_STAGE_1_F");
@@ -152,7 +157,7 @@ public class CoreAllAuthCodes {
         put(AUTH_STAGE_2_R, "AUTH_STAGE_2_R");
         put(AUTH_STAGE_2_W, "AUTH_STAGE_2_W");
         put(AUTH_STAGE_2_F, "AUTH_STAGE_2_F");
-//-----
+        //-----
         put(AUTH_STAGE_3_R, "AUTH_STAGE_3_R");
         put(AUTH_STAGE_3_W, "AUTH_STAGE_3_W");
         put(AUTH_STAGE_3_F, "AUTH_STAGE_3_F");
@@ -244,7 +249,55 @@ public class CoreAllAuthCodes {
 
     }};
 
-    public String encodeRole(HashSet<String> roles){
+   Map<String,String> getRoleCodeMapsByDeviceEnumOrPlatformEnum(DeviceEnum deviceType, PlatformEnum platformType){
+       Map<String, String> filteredRoleCodeMaps  = new HashMap<String, String>();
+
+       if(deviceType!=null){
+           if(deviceType.getDeviceCode()==DeviceEnum.TV.getDeviceCode()){
+
+           } else if(deviceType.getDeviceCode()==DeviceEnum.DESKTOP.getDeviceCode()){
+
+           }
+           else if(deviceType.getDeviceCode()==DeviceEnum.MOBILE_PHONE.getDeviceCode()){
+
+           } else if(deviceType.getDeviceCode()==DeviceEnum.LAPTOP.getDeviceCode()){
+
+           }
+       }
+
+       if(platformType!=null){
+
+           if(platformType.getPlatformCode()==PlatformEnum.IOS.getPlatformCode()){
+
+           } else if(platformType.getPlatformCode()==PlatformEnum.MACOS.getPlatformCode())
+           {
+
+           }
+           else if(platformType.getPlatformCode()==PlatformEnum.WEB.getPlatformCode())
+           {
+
+           } else if(platformType.getPlatformCode()==PlatformEnum.ANDROID.getPlatformCode())
+           {
+
+           } else if(platformType.getPlatformCode()==PlatformEnum.LINUX.getPlatformCode())
+           {
+
+           } else if(platformType.getPlatformCode()==PlatformEnum.WINDOWS.getPlatformCode())
+           {
+
+           }
+       }
+
+       if(filteredRoleCodeMaps.size()>0){
+           return  filteredRoleCodeMaps;
+       } else {
+           return  roleCodeMaps;
+       }
+
+   }
+
+  public String encodeRole(HashSet<String> roles){
+
         StringBuilder stringBuilder = new StringBuilder();
         roles.forEach(role ->{
             roleCodeMaps.forEach((s, s2) -> {
@@ -253,7 +306,6 @@ public class CoreAllAuthCodes {
                 }
             });
         } );
-
         return stringBuilder.toString();
     }
 
@@ -268,11 +320,6 @@ public class CoreAllAuthCodes {
           }
       }
 
-      allRoleCodes.forEach(s -> System.out.println(s));
-
-
-
-
        allRoleCodes.forEach(roleCode -> {
            roleCodeMaps.forEach((s, s2) -> {
                if (s.matches(roleCode)) {
@@ -280,9 +327,22 @@ public class CoreAllAuthCodes {
                }
            });
        });
-
-
-
       return allRoles;
   }
+
+  public List<String> differentiateRoles(HashSet<String> roles, int extraRoleNumber){
+
+      if(roles.toArray().length>extraRoleNumber){
+          List<String> allRoles = roles.stream().toList();
+          List<String> differentiateRoles = new ArrayList<>();
+
+          for (int i=extraRoleNumber;i<allRoles.toArray().length;i++){
+              differentiateRoles.add(allRoles.get(i));
+          }
+          return  differentiateRoles;
+      }
+      else {
+      return List.of();
+    }}
+
 }
