@@ -1,4 +1,4 @@
-package constants.coreConstants;
+package managers;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -129,7 +129,7 @@ public class ExceptionCodeManager {
     public static String D_CONFIRMATION_TOKEN_ALREADY_USED = "0033";
     public static String D_CONFIRMATION_TOKEN_NOT_REGISTERED = "0034";
 
-    Map<String, String> baseCodesMaps  = new HashMap<String, String>() {{
+    Map<String, String> baseCodesMaps  = new HashMap<>() {{
         put(B_ALREADY_ACCEPTED_EXCEPTION_ERROR_CODE, "already accepted");
         put(B_ALREADY_EXIST_EXCEPTION_ERROR_CODE, "already exist");
         put(B_FORBIDDEN_EXCEPTION_ERROR_CODE, "forbidden");
@@ -141,7 +141,7 @@ public class ExceptionCodeManager {
 
     }};
 
-    Map<String, String> topicCodesMaps  = new HashMap<String, String>() {{
+    Map<String, String> topicCodesMaps  = new HashMap<>() {{
         put(T_ACCESS_TOKEN, "access token");
         put(T_CONFIRMATION_TOKEN, "confirmation token");
         put(T_EMAIL, "email");
@@ -155,7 +155,7 @@ public class ExceptionCodeManager {
         put(T_USER, "user");
     }};
 
-    Map<String, String> detailCodesMaps  = new HashMap<String, String>() {{
+    Map<String, String> detailCodesMaps  = new HashMap<>() {{
         put("0001", "email already used");
         put("0002", "username already used");
         put("0003", "email and username already used");

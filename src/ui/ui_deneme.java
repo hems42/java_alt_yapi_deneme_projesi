@@ -1,15 +1,14 @@
 package ui;
 
-import constants.coreConstants.RoleCodeManager;
+import managers.RoleCodeManager;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Base64;
 import java.util.HashSet;
-import java.util.List;
 
-public class ui_deneme extends Frame {
+public class ui_deneme  {
     private JButton button1;
     private JPanel panel1;
 
@@ -48,21 +47,34 @@ public class ui_deneme extends Frame {
         String encodedRoles =    roleCodeManager.encodeRole(roleList);
 
 
+
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("roleKodu : " + encodedRoles);
+                String str = "şifrelenmiş";
 
-                List<String> roles =   roleCodeManager.decodeRolesFromRoleCode(encodedRoles);
+                // Encode data on your side using BASE64
+                byte[] bytesEncoded = Base64.getEncoder().encode(str.getBytes());
+                System.out.println("encoded value is " + new String(bytesEncoded));
 
-                roles.forEach(s -> {
-                    System.out.println(s);
-                });
+// Decode data on other side, by processing encoded data
+                byte[] valueDecoded = Base64.getDecoder().decode(bytesEncoded);
+                System.out.println("Decoded value is " + new String(valueDecoded));
             }
         });
     }
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
+    }
+
+    public void setData(ui_deneme data) {
+    }
+
+    public void getData(ui_deneme data) {
+    }
+
+    public boolean isModified(ui_deneme data) {
+        return false;
     }
 }

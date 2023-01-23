@@ -1,4 +1,4 @@
-package constants.coreConstants;
+package managers;
 
 import constants.coreEnums.DeviceEnum;
 import constants.coreEnums.PlatformEnum;
@@ -250,7 +250,7 @@ public class RoleCodeManager {
     }};
 
    Map<String,String> getRoleCodeMapsByDeviceEnumOrPlatformEnum(DeviceEnum deviceType, PlatformEnum platformType){
-       Map<String, String> filteredRoleCodeMaps  = new HashMap<String, String>();
+       Map<String, String> filteredRoleCodeMaps  = new HashMap<>();
 
        if(deviceType!=null){
            if(deviceType.getDeviceCode()==DeviceEnum.TV.getDeviceCode()){

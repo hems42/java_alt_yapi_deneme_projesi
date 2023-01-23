@@ -1,6 +1,8 @@
-import constants.coreConstants.RoleCodeManager;
-import constants.coreConstants.ExceptionCodeManager;
+import managers.RoleCodeManager;
+import managers.ExceptionCodeManager;
+import model.JwtModel;
 
+import java.util.Base64;
 import java.util.HashSet;
 import java.util.List;
 
@@ -8,8 +10,28 @@ public class Main {
 
     public static void main(String[] args) {
 
+        JwtModel jwtModel  =  new JwtModel(
+                "hemsCaglar42",
+                "ESHHEMSİRE",
+                "001002003004005006007008009",
+                "PLT_001",
+                "DVC_005",
+                "01.01.2023",
+                "01"
+        );
 
-        authDeneme();
+        byte[] valueDecoded = Base64.getDecoder().decode(jwtModel.getLoginCode());
+        System.out.println("Decoded value is " + new String(valueDecoded));
+
+        System.out.println("gelen encode  : "+ jwtModel.getLoginCode());
+
+        String gelen = new String(valueDecoded);
+        for (String s : gelen.split(",")) {
+            System.out.println("gelen anlık : " + s);
+        }
+
+
+        //authDeneme();
        // exceptionDeneme();
     }
 
